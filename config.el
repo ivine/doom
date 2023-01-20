@@ -77,8 +77,8 @@
 
  ;; ------- 开启时屏幕位置/尺寸 配置 Start -----------------------------------------------------------------------------
 (set-frame-position (selected-frame) 0 0)
-(pushnew! initial-frame-alist '(width . 272) '(height . 100)) ;; 调整特定尺寸
-;; (add-hook 'window-setup-hook #'toggle-frame-maximized) ;; 最大化
+;; (pushnew! initial-frame-alist '(width . 100) '(height . 100)) ;; 调整特定尺寸
+(add-to-list 'initial-frame-alist '(fullscreen . maximized)) ;; 最大化
 ;; ------- 开启时屏幕位置/尺寸 配置 End -----------------------------------------------------------------------------
 
 ;; ------- Flutter 配置 Start -----------------------------------------------------------------------------
@@ -101,7 +101,6 @@
       read-process-output-max (* 1024 1024))
 
 (setq dart-enable-analysis-server t)
-(setq lsp-dart-enable-sdk-formatter t)
 ;; ------- Flutter 配置 End -----------------------------------------------------------------------------
 
 ;; ------- treemacs 配置 Start -----------------------------------------------------------------------------
@@ -219,8 +218,6 @@
   :after (treemacs)
   :ensure t
   :config (treemacs-set-scope-type 'Tabs))
-;; (with-eval-after-load 'treemacs
-;;   (define-key treemacs-mode-map [kbd "s-<mouse-1>"] #'treemacs-single-click-expand-action)) ;; 单击展开菜单, Command + 单击
 ;; ------- treemacs 配置 End -----------------------------------------------------------------------------
 
 ;; ------- lsp-treemacs 配置 Start -----------------------------------------------------------------------------
@@ -240,5 +237,33 @@
                     :height 140
                     :italic t)))
   :config
-  (global-blamer-mode 1))
+  (global-blamer-mode 0))
 ;; ------- blamer 配置 End -----------------------------------------------------------------------------
+
+;; ------- all-the-icons 配置 Start -----------------------------------------------------------------------------
+(use-package all-the-icons
+  :after memoize
+  :load-path "site-lisp/all-the-icons")
+;; ------- all-the-icons 配置 End -----------------------------------------------------------------------------
+
+;; ------- 代码 minimap 配置 Start -----------------------------------------------------------------------------
+;; (setq
+;;   ;; Configure minimap position
+;;   minimap-window-location 'right ; Minimap on the right side
+;;   minimap-width-fraction 0.0 ; slightly smaller minimap
+;;   minimap-minimum-width 20 ; also slightly smaller minimap
+
+;;   minimap-dedicated-window t ; seems to work better
+;;   minimap-enlarge-certain-faces nil ; enlarge breaks BlockFont
+;; )
+;; (minimap-mode 1)
+;; ------- 代码 minimap 配置 End -----------------------------------------------------------------------------
+
+;; ------- helm 配置 Start -----------------------------------------------------------------------------
+;; TODO: 描述以后再看，https://github.com/lujun9972/emacs-document/blob/master/emacs-common/我用Helm并且推荐你也用的原因.org
+;; (helm-mode)
+;; (require 'helm-xref)
+;; (define-key global-map [remap find-file] #'helm-find-files)
+;; (define-key global-map [remap execute-extended-command] #'helm-M-x)
+;; (define-key global-map [remap switch-to-buffer] #'helm-mini)
+;; ------- helm 配置 End -----------------------------------------------------------------------------

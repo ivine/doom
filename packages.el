@@ -50,3 +50,10 @@
 ;(unpin! t)
 
 (package! blamer)
+
+(package! treemacs-magit)
+(package! treemacs-all-the-icons)
+(package! treemacs-persp)
+(package! treemacs-icons-dired)
+(package! persp-mode)
+(package! prettier)
