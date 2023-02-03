@@ -32,6 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
+;; (setq doom-theme 'doom-one)
 (setq doom-theme 'doom-dracula)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -77,7 +78,6 @@
 
  ;; ------- 开启时屏幕位置/尺寸 配置 Start -----------------------------------------------------------------------------
 (set-frame-position (selected-frame) 0 0)
-;; (pushnew! initial-frame-alist '(width . 100) '(height . 100)) ;; 调整特定尺寸
 (add-to-list 'initial-frame-alist '(fullscreen . maximized)) ;; 最大化
 ;; ------- 开启时屏幕位置/尺寸 配置 End -----------------------------------------------------------------------------
 
@@ -101,6 +101,14 @@
       read-process-output-max (* 1024 1024))
 
 (setq dart-enable-analysis-server t)
+(use-package lsp-dart
+  :ensure t
+  :hook (dart-mode . lsp)
+  :config
+  (progn
+    (setq lsp-dart-line-length 140
+          lsp-dart-enable-sdk-formatter t
+          lsp-dart-test-tree-line-spacing 2)))
 ;; ------- Flutter 配置 End -----------------------------------------------------------------------------
 
 ;; ------- treemacs 配置 Start -----------------------------------------------------------------------------
@@ -160,7 +168,7 @@
           treemacs-user-mode-line-format           nil
           treemacs-user-header-line-format         nil
           treemacs-wide-toggle-width               70
-          treemacs-width                           35
+          treemacs-width                           60
           treemacs-width-increment                 1
           treemacs-width-is-initially-locked       t
           treemacs-workspace-switch-cleanup        nil)
@@ -218,6 +226,8 @@
   :after (treemacs)
   :ensure t
   :config (treemacs-set-scope-type 'Tabs))
+;; (with-eval-after-load 'treemacs
+;;   (define-key treemacs-mode-map [kbd "s-<mouse-1>"] #'treemacs-single-click-expand-action)) ;; 单击展开菜单, Command + 单击
 ;; ------- treemacs 配置 End -----------------------------------------------------------------------------
 
 ;; ------- lsp-treemacs 配置 Start -----------------------------------------------------------------------------
@@ -232,12 +242,12 @@
   (blamer-idle-time 0.3)
   (blamer-min-offset 70)
   :custom-face
-  (blamer-face ((t :foreground "#7a88cf"
+  (blamer-face ((t :foreground "#e35d5b"
                     :background nil
-                    :height 140
+                    :height 110
                     :italic t)))
   :config
-  (global-blamer-mode 0))
+  (global-blamer-mode 1))
 ;; ------- blamer 配置 End -----------------------------------------------------------------------------
 
 ;; ------- all-the-icons 配置 Start -----------------------------------------------------------------------------
@@ -258,6 +268,35 @@
 ;; )
 ;; (minimap-mode 1)
 ;; ------- 代码 minimap 配置 End -----------------------------------------------------------------------------
+;; ------- minimap 配置 Start -----------------------------------------------------------------------------
+(use-package minimap
+  :init
+  (setq minimap-width-fraction 0.10
+        minimap-minimum-width 10
+        minimap-window-location 'right)
+  (setq minimap-major-modes '(prog-mode text-mode))
+  (defun minimap--customize nil
+    (with-current-buffer minimap-buffer-name
+      (setq-local fringe-indicator-alist (append '((continuation nil nil)) fringe-indicator-alist))
+      (setq-local window-size-fixed 'width)
+      (set-window-fringes (minimap-get-window) 1 1 nil)))
+  :hook (after-init . minimap-mode)
+  :config
+  (advice-add #'minimap-new-minimap :after #'minimap--customize))
+(custom-set-faces
+ ;; 屏幕区域的颜色
+ '(minimap-active-region-background
+   ((((background dark)) (:background "#494949"))
+    (t (:background "#D6D6D6")))
+   :group 'minimap))
+
+(defun +minimap-set-highlight-line--on ()
+  (setq +minimap-highlight-line t)
+	(custom-set-faces!
+		'(minimap-current-line-face :background "#51AFEF" :group 'minimap)))
+
+(setq minimap-mode t)
+;; ------- minimap 配置 End -----------------------------------------------------------------------------
 
 ;; ------- helm 配置 Start -----------------------------------------------------------------------------
 ;; TODO: 描述以后再看，https://github.com/lujun9972/emacs-document/blob/master/emacs-common/我用Helm并且推荐你也用的原因.org
