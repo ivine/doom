@@ -55,5 +55,6 @@
 (package! treemacs-all-the-icons)
 (package! treemacs-persp)
 (package! treemacs-icons-dired)
+(package! treemacs-tab-bar)
 (package! persp-mode)
 (package! prettier)

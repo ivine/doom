@@ -178,8 +178,6 @@
        ;;notmuch
        ;;(wanderlust +gmail)
 
-       :app
-       ;;calendar
        ;;emms
        ;;everywhere        ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
