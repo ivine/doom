@@ -100,14 +100,11 @@
       read-process-output-max (* 1024 1024))
 
 (setq dart-enable-analysis-server t)
-(use-package lsp-dart
-  :ensure t
-  :hook (dart-mode . lsp)
-  :config
-  (progn
-    (setq lsp-dart-line-length 140
-          lsp-dart-enable-sdk-formatter t
-          lsp-dart-test-tree-line-spacing 2)))
+(after! lsp-dart
+  (setq lsp-dart-line-length 140)  ;; 一行的最大长度
+  (setq-hook! 'dart-mode-hook tab-width 2)  ;; 制表符 2
+  (setq-hook! 'dart-mode-hook +format-without-save nil) ;; 保存不自动格式化
+)
 ;; ------- Flutter 配置 End -----------------------------------------------------------------------------
 
 ;; ------- treemacs 配置 Start -----------------------------------------------------------------------------
