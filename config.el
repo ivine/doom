@@ -32,7 +32,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-dracula)
+;; (setq doom-theme 'doom-dracula)
+(setq doom-theme 'misterioso)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -75,7 +76,16 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
- ;; ------- 开启时屏幕位置/尺寸 配置 Start -----------------------------------------------------------------------------
+;; ------- 主题 配置 Start -----------------------------------------------------------------------------
+;; 适用于 misterioso 主题的配置
+(custom-set-faces!
+  '(region :background "#ff9966"))
+(setq evil-normal-state-cursor '(box "#ff5858") ;; pink
+      evil-insert-state-cursor '(bar "#AA076B") ;; purple
+      evil-visual-state-cursor '(hollow "orange"))
+;; ------- 主题 配置 End -----------------------------------------------------------------------------
+
+;; ------- 开启时屏幕位置/尺寸 配置 Start -----------------------------------------------------------------------------
 (set-frame-position (selected-frame) 0 0)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized)) ;; 最大化
 ;; ------- 开启时屏幕位置/尺寸 配置 End -----------------------------------------------------------------------------
