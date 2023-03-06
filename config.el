@@ -81,8 +81,8 @@
 (custom-set-faces!
   '(region :background "#ff9966"))
 (setq evil-normal-state-cursor '(box "#ff5858") ;; pink
-      evil-insert-state-cursor '(bar "#AA076B") ;; purple
-      evil-visual-state-cursor '(hollow "orange"))
+      evil-insert-state-cursor '(bar "#ffffff") ;; white
+      evil-visual-state-cursor '(hollow "#FFA500")) ;; orange
 ;; ------- 主题 配置 End -----------------------------------------------------------------------------
 
 ;; ------- 开启时屏幕位置/尺寸 配置 Start -----------------------------------------------------------------------------
@@ -284,34 +284,6 @@
 ;; (define-key global-map [remap switch-to-buffer] #'helm-mini)
 ;; ------- helm 配置 End -----------------------------------------------------------------------------
 
-;; ------- Rust 配置 Start -----------------------------------------------------------------------------
-(setq rustic-lsp-server 'rust-analyzer)
-;; 设置 Rust 的语言服务器为 RLS
-(setq rustic-lsp-server 'rls)
-;; 启用代码折叠功能
-(add-hook 'rust-mode-hook #'hs-minor-mode)
-
-;; 自动格式化代码
-(setq-hook! 'rust-mode-hook +format-with :none)
-
-;; 自动插入末尾分号
-(setq-hook! 'rust-mode-hook +format-with-lsp nil)
-(add-hook 'rust-mode-hook #'rainbow-delimiters-mode)
-;; ------- Rust 配置 End -----------------------------------------------------------------------------
-
 ;; ------- 字体配置 Start -----------------------------------------------------------------------------
 (set-frame-font "Menlo 14" nil t)
 ;; ------- 字体配置 End -----------------------------------------------------------------------------
-
-;; ------- xterm-color 配置 Start -----------------------------------------------------------------------------
-(use-package xterm-color
-  :ensure t)
-(setq system-uses-terminfo nil)
-(setq xterm-color-preserve-properties t)
-(setq xterm-color-regenerate-ansi t)
-(add-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
-(add-hook 'shell-mode-hook
-          (lambda ()
-            (setq-local yas-indent-line 'fixed)
-            (setq-local xterm-color-preserve-properties t)))
-;; ------- xterm-color 配置 End -----------------------------------------------------------------------------
