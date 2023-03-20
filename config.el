@@ -33,7 +33,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-dracula)
-(setq doom-theme 'misterioso)
+;; (setq doom-theme 'misterioso)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -77,12 +77,28 @@
 ;; they are implemented.
 
 ;; ------- 主题 配置 Start -----------------------------------------------------------------------------
-;; 适用于 misterioso 主题的配置
-(custom-set-faces!
-  '(region :background "#ff9966"))
-(setq evil-normal-state-cursor '(box "#ff5858") ;; pink
+(message "主题配置条件判断, The current computer name is %s" system-name)
+(defvar dw-doom-theme 'doom-dracula
+  "The default Doom theme.")
+;; (setq doom-theme 'misterioso)
+(cond
+  ;; 自己的 MBA
+  ((string= system-name "a1deMacBook-Air.local")
+   (setq dw-doom-theme 'doom-dracula))
+  ;; 公司: VD
+  ((string= system-name "VD")
+   (setq dw-doom-theme 'misterioso)
+    (custom-set-faces! 
+      '(region :background "#ff9966"))
+    (setq evil-normal-state-cursor '(box "#ff5858") ;; pink
       evil-insert-state-cursor '(bar "#ffffff") ;; white
       evil-visual-state-cursor '(hollow "#FFA500")) ;; orange
+   )
+  ;; 默认主题
+  (t (setq dw-doom-theme 'doom-one))
+)
+(setq doom-theme dw-doom-theme)
+(load-theme dw-doom-theme t)
 ;; ------- 主题 配置 End -----------------------------------------------------------------------------
 
 ;; ------- 开启时屏幕位置/尺寸 配置 Start -----------------------------------------------------------------------------
@@ -206,38 +222,13 @@
         ("C-x t B"   . treemacs-bookmark)
         ("C-x t C-t" . treemacs-find-file)
         ("C-x t M-t" . treemacs-find-tag)))
-
-(use-package treemacs-evil
-  :after (treemacs evil)
-  :ensure t)
-
-(use-package treemacs-projectile
-  :after (treemacs projectile)
-  :ensure t)
-
-(use-package treemacs-icons-dired
-  :hook (dired-mode . treemacs-icons-dired-enable-once)
-  :ensure t)
-
-(use-package treemacs-magit
-  :after (treemacs magit)
-  :ensure t)
-
-(use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
-  :after (treemacs persp-mode) ;;or perspective vs. persp-mode
-  :ensure t
-  :config (treemacs-set-scope-type 'Perspectives))
-
-(use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
-  :after (treemacs)
-  :ensure t
-  :config (treemacs-set-scope-type 'Tabs))
-;; (with-eval-after-load 'treemacs
-;;   (define-key treemacs-mode-map [kbd "s-<mouse-1>"] #'treemacs-single-click-expand-action)) ;; 单击展开菜单, Command + 单击
+;; 单击展开菜单, Command + 单击
+(with-eval-after-load 'treemacs
+  (define-key treemacs-mode-map [kbd "s-<mouse-1>"] #'treemacs-single-click-expand-action))
 ;; ------- treemacs 配置 End -----------------------------------------------------------------------------
 
 ;; ------- lsp-treemacs 配置 Start -----------------------------------------------------------------------------
-(lsp-treemacs-sync-mode 1)
+;; (lsp-treemacs-sync-mode 1)
 ;; ------- lsp-treemacs 配置 End -----------------------------------------------------------------------------
 
 ;; ------- blamer 配置 Start -----------------------------------------------------------------------------
