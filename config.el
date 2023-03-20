@@ -86,7 +86,7 @@
   ((string= system-name "a1deMacBook-Air.local")
    (setq dw-doom-theme 'doom-dracula))
   ;; 公司: VD
-  ((string= system-name "VD")
+  ((string= system-name "VD-Mac-Mini.local")
    (setq dw-doom-theme 'misterioso)
     (custom-set-faces! 
       '(region :background "#ff9966"))
@@ -125,7 +125,6 @@
 (setq gc-cons-threshold (* 100 1024 1024)
       read-process-output-max (* 1024 1024))
 
-(setq dart-enable-analysis-server t)
 (after! lsp-dart
   (setq lsp-dart-line-length 140)  ;; 一行的最大长度
   (setq-hook! 'dart-mode-hook tab-width 2)  ;; 制表符 2
