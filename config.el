@@ -83,10 +83,10 @@
 ;; (setq doom-theme 'misterioso)
 (cond
   ;; 自己的 MBA
-  ((string= system-name "a1deMacBook-Air.local")
+  ((string-prefix-p "a1" system-name) ;; 以 a1 开头
    (setq dw-doom-theme 'doom-dracula))
   ;; 公司: VD
-  ((string= system-name "VD-Mac-Mini.local")
+  ((string-prefix-p "VD" system-name) ;; 以 VD 开头, 公司的 Mac mini
    (setq dw-doom-theme 'misterioso)
     (custom-set-faces! 
       '(region :background "#ff9966"))
