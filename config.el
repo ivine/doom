@@ -276,5 +276,5 @@
 
 ;; ------- 字体配置 Start -----------------------------------------------------------------------------
 ;; (set-frame-font "Menlo 13" nil t)
-(setq doom-font (font-spec :family "SF Mono" :size 13))
+(setq doom-font (font-spec :family "Hack Nerd Font" :size 13))
 ;; ------- 字体配置 End -----------------------------------------------------------------------------
