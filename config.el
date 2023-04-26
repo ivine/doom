@@ -94,6 +94,15 @@
       evil-insert-state-cursor '(bar "#ffffff") ;; white
       evil-visual-state-cursor '(hollow "#FFA500")) ;; orange
    )
+  ;; 自己放公司的 HackinTosh: a2 
+  ((string-prefix-p "a2" system-name) ;; 以 VD 开头, 公司的 Mac mini
+   (setq dw-doom-theme 'misterioso)
+    (custom-set-faces! 
+      '(region :background "#ff9966"))
+    (setq evil-normal-state-cursor '(box "#ff5858") ;; pink
+      evil-insert-state-cursor '(bar "#ffffff") ;; white
+      evil-visual-state-cursor '(hollow "#FFA500")) ;; orange
+   )
   ;; 默认主题
   (t (setq dw-doom-theme 'doom-one))
 )
