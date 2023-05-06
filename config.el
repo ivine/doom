@@ -99,6 +99,8 @@
    (setq dw-doom-theme 'misterioso)
     (custom-set-faces! 
       '(region :background "#ff9966"))
+    (custom-set-faces!
+      '(company-tooltip-selection :background "#4CB8C4")) ;; 代码提示的高亮
     (setq evil-normal-state-cursor '(box "#ff5858") ;; pink
       evil-insert-state-cursor '(bar "#ffffff") ;; white
       evil-visual-state-cursor '(hollow "#FFA500")) ;; orange
@@ -285,5 +287,5 @@
 
 ;; ------- 字体配置 Start -----------------------------------------------------------------------------
 ;; (set-frame-font "Menlo 13" nil t)
-(setq doom-font (font-spec :family "Hack Nerd Font" :size 13))
+(setq doom-font (font-spec :family "Hack Nerd Font" :size 14))
 ;; ------- 字体配置 End -----------------------------------------------------------------------------
