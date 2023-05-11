@@ -285,7 +285,16 @@
 ;; (define-key global-map [remap switch-to-buffer] #'helm-mini)
 ;; ------- helm 配置 End -----------------------------------------------------------------------------
 
+;; ------- zoom-window 配置 Start -----------------------------------------------------------------------------
+(require 'zoom-window)
+(global-set-key (kbd "C-x C-z") 'zoom-window-zoom)
+(custom-set-variables
+ '(zoom-window-mode-line-color "DarkGreen"))
+;; ------- zoom-window 配置 End -----------------------------------------------------------------------------
+
 ;; ------- 字体配置 Start -----------------------------------------------------------------------------
 ;; (set-frame-font "Menlo 13" nil t)
 (setq doom-font (font-spec :family "Hack Nerd Font" :size 14))
 ;; ------- 字体配置 End -----------------------------------------------------------------------------
+
+
