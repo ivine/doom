@@ -94,17 +94,19 @@
       evil-insert-state-cursor '(bar "#ffffff") ;; white
       evil-visual-state-cursor '(hollow "#FFA500")) ;; orange
    )
-  ;; 自己放公司的 HackinTosh: a2 
-  ((string-prefix-p "a2" system-name) ;; 以 VD 开头, 公司的 Mac mini
-   (setq dw-doom-theme 'misterioso)
-    (custom-set-faces! 
-      '(region :background "#ff9966"))
-    (custom-set-faces!
-      '(company-tooltip-selection :background "#4CB8C4")) ;; 代码提示的高亮
-    (setq evil-normal-state-cursor '(box "#ff5858") ;; pink
-      evil-insert-state-cursor '(bar "#ffffff") ;; white
-      evil-visual-state-cursor '(hollow "#FFA500")) ;; orange
-   )
+  ;; 自己放公司的 HackinTosh: a2
+  ((string-prefix-p "a2" system-name) ;; 以 a2 开头
+   (setq dw-doom-theme 'doom-dracula))
+  ;; ((string-prefix-p "a2" system-name) ;; 以 VD 开头, 公司的 Mac mini
+  ;;  (setq dw-doom-theme 'misterioso)
+  ;;   (custom-set-faces! 
+  ;;     '(region :background "#ff9966"))
+  ;;   (custom-set-faces!
+  ;;     '(company-tooltip-selection :background "#4CB8C4")) ;; 代码提示的高亮
+  ;;   (setq evil-normal-state-cursor '(box "#ff5858") ;; pink
+  ;;     evil-insert-state-cursor '(bar "#ffffff") ;; white
+  ;;     evil-visual-state-cursor '(hollow "#FFA500")) ;; orange
+  ;;  )
   ;; 默认主题
   (t (setq dw-doom-theme 'doom-one))
 )
@@ -275,6 +277,14 @@
 ;; )
 ;; (minimap-mode 1)
 ;; ------- 代码 minimap 配置 End -----------------------------------------------------------------------------
+
+
+;; ------- evil-mc 配置 Start -----------------------------------------------------------------------------
+(use-package evil-mc
+  :ensure t
+  :init
+  (global-evil-mc-mode 1))
+;; ------- evil-mc 配置 End -----------------------------------------------------------------------------
 
 ;; ------- helm 配置 Start -----------------------------------------------------------------------------
 ;; TODO: 描述以后再看，https://github.com/lujun9972/emacs-document/blob/master/emacs-common/我用Helm并且推荐你也用的原因.org
