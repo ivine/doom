@@ -53,3 +53,6 @@
 
 (package! persp-mode)
 (package! prettier)
+
+(package! better-jumper)
+(package! git-gutter)
