@@ -119,6 +119,24 @@
 (add-to-list 'initial-frame-alist '(fullscreen . maximized)) ;; 最大化
 ;; ------- 开启时屏幕位置/尺寸 配置 End -----------------------------------------------------------------------------
 
+;; ------- flycheck 配置 Start -----------------------------------------------------------------------------
+(after! flycheck
+  (setq flycheck-disabled-checkers
+        '(dart-dartanalyzer
+          swift
+          javascript-eslint
+          typescript-tslint
+          rust-cargo)))
+
+;; 只检查当前 Projectile 项目的文件
+(after! flycheck
+  (defun my-flycheck-setup ()
+    (when (projectile-project-p)
+      (setq-local flycheck-disabled-checkers nil)))
+
+  (add-hook 'prog-mode-hook 'my-flycheck-setup))
+;; ------- flycheck 配置 End -----------------------------------------------------------------------------
+
 ;; ------- Flutter 配置 Start -----------------------------------------------------------------------------
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
