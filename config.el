@@ -85,15 +85,6 @@
   ;; 自己的 MBA
   ((string-prefix-p "a1" system-name) ;; 以 a1 开头
    (setq dw-doom-theme 'doom-dracula))
-  ;; 公司: VD
-  ((string-prefix-p "VD" system-name) ;; 以 VD 开头, 公司的 Mac mini
-   (setq dw-doom-theme 'misterioso)
-    (custom-set-faces! 
-      '(region :background "#ff9966"))
-    (setq evil-normal-state-cursor '(box "#ff5858") ;; pink
-      evil-insert-state-cursor '(bar "#ffffff") ;; white
-      evil-visual-state-cursor '(hollow "#FFA500")) ;; orange
-   )
   ;; 自己放公司的 HackinTosh: a2
   ((string-prefix-p "a2" system-name) ;; 以 a2 开头
    (setq dw-doom-theme 'doom-dracula))
@@ -118,24 +109,6 @@
 (set-frame-position (selected-frame) 0 0)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized)) ;; 最大化
 ;; ------- 开启时屏幕位置/尺寸 配置 End -----------------------------------------------------------------------------
-
-;; ------- flycheck 配置 Start -----------------------------------------------------------------------------
-(after! flycheck
-  (setq flycheck-disabled-checkers
-        '(dart-dartanalyzer
-          swift
-          javascript-eslint
-          typescript-tslint
-          rust-cargo)))
-
-;; 只检查当前 Projectile 项目的文件
-(after! flycheck
-  (defun my-flycheck-setup ()
-    (when (projectile-project-p)
-      (setq-local flycheck-disabled-checkers nil)))
-
-  (add-hook 'prog-mode-hook 'my-flycheck-setup))
-;; ------- flycheck 配置 End -----------------------------------------------------------------------------
 
 ;; ------- Flutter 配置 Start -----------------------------------------------------------------------------
 (require 'package)
@@ -257,6 +230,21 @@
 ;; (custom-set-variables
 ;;  '(zoom-window-mode-line-color "DarkGreen"))
 ;; ------- zoom-window 配置 End -----------------------------------------------------------------------------
+
+
+;; ------- lsp-mode 配置 Start -----------------------------------------------------------------------------
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\flutter\\'")
+  ;; or
+  ;; (add-to-list 'lsp-file-watch-ignored-files "[/\\\\]\\.my-files\\'")
+)
+(defun lsp_log_project_info ()
+  (when (and (projectile-project-p)
+            (message "debug log, projectile-project-name = %s" projectile-project-name)
+            (message "debug log, projectile-project-root = %s" projectile-project-root))
+    (push (projectile-project-root) lsp-session-folder-blacklist)))
+(add-hook 'lsp-mode-hook #'lsp_log_project_info)
+;; ------- lsp-mode 配置 End -----------------------------------------------------------------------------
 
 ;; ------- 字体配置 Start -----------------------------------------------------------------------------
 ;; (set-frame-font "Menlo 13" nil t)

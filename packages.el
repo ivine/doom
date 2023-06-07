@@ -56,3 +56,5 @@
 
 (package! better-jumper)
 (package! git-gutter)
+
+(package! zoom-window)
