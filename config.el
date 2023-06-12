@@ -242,7 +242,8 @@
   (when (and (projectile-project-p)
             (message "debug log, projectile-project-name = %s" projectile-project-name)
             (message "debug log, projectile-project-root = %s" projectile-project-root))
-    (push (projectile-project-root) lsp-session-folder-blacklist)))
+    ;; (push (projectile-project-root) lsp-session-folder-blacklist)
+    ))
 (add-hook 'lsp-mode-hook #'lsp_log_project_info)
 ;; ------- lsp-mode 配置 End -----------------------------------------------------------------------------
 
