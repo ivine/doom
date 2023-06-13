@@ -99,7 +99,7 @@
   ;;     evil-visual-state-cursor '(hollow "#FFA500")) ;; orange
   ;;  )
   ;; 默认主题
-  (t (setq dw-doom-theme 'doom-one))
+  (t (setq dw-doom-theme 'doom-dracula))
 )
 (setq doom-theme dw-doom-theme)
 (load-theme dw-doom-theme t)
@@ -109,6 +109,12 @@
 (set-frame-position (selected-frame) 0 0)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized)) ;; 最大化
 ;; ------- 开启时屏幕位置/尺寸 配置 End -----------------------------------------------------------------------------
+
+;; ------- 基础配置 Start -----------------------------------------------------------------------------
+(defvar user-home-directory (expand-file-name "~")
+  "Current user's home directory") ;; 获取当前路径
+(message "Home directory: %s" user-home-directory)
+;; ------- 基础配置 End -----------------------------------------------------------------------------
 
 ;; ------- Flutter 配置 Start -----------------------------------------------------------------------------
 (require 'package)
@@ -129,19 +135,19 @@
 (setq gc-cons-threshold (* 100 1024 1024)
       read-process-output-max (* 1024 1024))
 
+(use-package lsp-dart
+  :config
+  (setq lsp-dart-sdk-dir (concat user-home-directory "/DevTools" "/flutter/bin/cache/dart-sdk")))
+
+
 (after! lsp-dart
   (setq lsp-dart-line-length 120)  ;; 一行的最大长度
   (setq-hook! 'dart-mode-hook tab-width 2)  ;; 制表符 2
-  (setq-hook! 'dart-mode-hook +format-without-save nil) ;; 保存不自动格式化
+  ;; (setq-hook! 'dart-mode-hook +format-without-save nil) ;; 保存不自动格式化
 )
 ;; ------- Flutter 配置 End -----------------------------------------------------------------------------
 
 ;; ------- git 配置 Start -----------------------------------------------------------------------------
-(use-package git-gutter
-  :ensure t
-  :config
-  (progn
-    (global-git-gutter-mode)))
 ;; ------- git 配置 End -----------------------------------------------------------------------------
 
 ;; ------- lsp-ui 配置 Start -----------------------------------------------------------------------------
