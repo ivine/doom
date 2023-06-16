@@ -137,7 +137,7 @@
 
 (use-package lsp-dart
   :config
-  (setq lsp-dart-sdk-dir (concat user-home-directory "/DevTools" "/flutter/bin/cache/dart-sdk")))
+  (setq lsp-dart-sdk-dir (concat user-home-directory "/fvm" "/default/bin/cache/dart-sdk")))
 
 
 (after! lsp-dart
