@@ -50,10 +50,9 @@
 ;(unpin! t)
 
 (package! blamer)
-
 (package! persp-mode)
 (package! prettier)
-
 (package! better-jumper)
-
 (package! zoom-window)
+(package! company-box)
+(package! esup)
