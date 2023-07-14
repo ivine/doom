@@ -56,3 +56,4 @@
 (package! zoom-window)
 (package! company-box)
 (package! esup)
+(package! mini-frame)

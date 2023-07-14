@@ -116,6 +116,12 @@
 (message "Home directory: %s" user-home-directory)
 ;; ------- 基础配置 End -----------------------------------------------------------------------------
 
+;; ------- mini-frame 配置 Start -----------------------------------------------------------------------------
+;; 设置 Mini Frame 居中显示
+(mini-frame-mode 1)
+(custom-set-variables '(mini-frame-show-parameters '((top . 0.4) (left . 0.5) (width . 0.6))))
+;; ------- mini-frame 配置 End -----------------------------------------------------------------------------
+
 ;; ------- Flutter 配置 Start -----------------------------------------------------------------------------
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
