@@ -256,18 +256,18 @@
 
 
 ;; ------- lsp-mode 配置 Start -----------------------------------------------------------------------------
-(with-eval-after-load 'lsp-mode
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\flutter\\'")
-  ;; or
-  ;; (add-to-list 'lsp-file-watch-ignored-files "[/\\\\]\\.my-files\\'")
-)
-(defun lsp_log_project_info ()
-  (when (and (projectile-project-p)
-            (message "debug log, projectile-project-name = %s" projectile-project-name)
-            (message "debug log, projectile-project-root = %s" projectile-project-root))
-    ;; (push (projectile-project-root) lsp-session-folder-blacklist)
-    ))
-(add-hook 'lsp-mode-hook #'lsp_log_project_info)
+;; (with-eval-after-load 'lsp-mode
+;;   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\flutter\\'")
+;;   ;; or
+;;   ;; (add-to-list 'lsp-file-watch-ignored-files "[/\\\\]\\.my-files\\'")
+;; )
+;; (defun lsp_log_project_info ()
+;;   (when (and (projectile-project-p)
+;;             (message "debug log, projectile-project-name = %s" projectile-project-name)
+;;             (message "debug log, projectile-project-root = %s" projectile-project-root))
+;;     ;; (push (projectile-project-root) lsp-session-folder-blacklist)
+;;     ))
+;; (add-hook 'lsp-mode-hook #'lsp_log_project_info)
 ;; ------- lsp-mode 配置 End -----------------------------------------------------------------------------
 
 ;; ------- doom-modeline 配置 Start -----------------------------------------------------------------------------

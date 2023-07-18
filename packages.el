@@ -57,3 +57,7 @@
 (package! company-box)
 (package! esup)
 (package! mini-frame)
+
+(package! lsp-treemacs)
+(package! treemacs-evil)
+(package! projectile)
