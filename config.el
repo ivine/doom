@@ -118,8 +118,8 @@
 
 ;; ------- mini-frame 配置 Start -----------------------------------------------------------------------------
 ;; 设置 Mini Frame 居中显示
-(mini-frame-mode 1)
-(custom-set-variables '(mini-frame-show-parameters '((top . 0.4) (left . 0.5) (width . 0.6))))
+;;(mini-frame-mode 1)
+;;(custom-set-variables '(mini-frame-show-parameters '((top . 0.4) (left . 0.5) (width . 0.6))))
 ;; ------- mini-frame 配置 End -----------------------------------------------------------------------------
 
 ;; ------- Flutter 配置 Start -----------------------------------------------------------------------------
