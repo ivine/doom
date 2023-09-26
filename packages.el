@@ -51,22 +51,28 @@
 
 (package! blamer)
 (package! persp-mode)
-(package! prettier)
 (package! better-jumper)
 (package! zoom-window)
 (package! company-box)
 (package! esup)
 (package! mini-frame)
-(package! lsp-treemacs)
 (package! treemacs-evil)
 (package! projectile)
 
-;; iOS
+;; lsp
 (package! lsp-sourcekit)
+(package! lsp-treemacs)
+(package! lsp-mode)
+(package! lsp-ui)
+(package! company-lsp)
+
+;; iOS
 (package! company-sourcekit)
 (package! swift-mode)
 (package! ob-swiftui)
 (package! flycheck-swift3)
 
 ;; 前端
+(package! prettier)
 (package! typescript-mode)
+(package! tide)
