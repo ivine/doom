@@ -274,7 +274,27 @@
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode))
-;; ------- lsp-mode 配置 Start -----------------------------------------------------------------------------
+;; ------- doom-modeline 配置 End -----------------------------------------------------------------------------
+
+;; ------- iOS 配置 Start -----------------------------------------------------------------------------
+(use-package lsp-sourcekit
+  :after lsp-mode
+  :config
+  (setq lsp-sourcekit-executable "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"))
+
+;; enable lsp automatically whenever you visit a .swift file
+(use-package swift-mode
+  :hook (swift-mode . (lambda () (lsp))))
+
+;; Swift 补全
+(add-to-list 'company-backends 'company-sourcekit)
+
+(with-eval-after-load 'flycheck
+  (add-hook 'flycheck-mode-hook #'flycheck-swift3-setup))
+
+;; SwiftUI
+;; (ob-swiftui-setup)
+;; ------- iOS 配置 End -----------------------------------------------------------------------------
 
 ;; ------- 字体配置 Start -----------------------------------------------------------------------------
 ;; (set-frame-font "Menlo 13" nil t)
