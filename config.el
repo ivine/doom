@@ -301,11 +301,19 @@
   tab-width 2
   evil-shift-width 2
   js-indent-level 2)
+
+(after! treesit
+  (setq treesit-language-source-alist
+        '((typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src" nil nil)
+          (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src" nil nil))))
+(use-package typescript-ts-mode
+  :mode (("\\.ts\\'" . typescript-ts-mode)
+         ("\\.tsx\\'" . tsx-ts-mode))
+  :config
+  (add-hook! '(typescript-ts-mode-hook tsx-ts-mode-hook) #'lsp!))
 ;; ------- Web 前端配置 End -----------------------------------------------------------------------------
 
 ;; ------- 字体配置 Start -----------------------------------------------------------------------------
 ;; (set-frame-font "Menlo 13" nil t)
 (setq doom-font (font-spec :family "Hack Nerd Font" :size 14))
 ;; ------- 字体配置 End -----------------------------------------------------------------------------
-
-

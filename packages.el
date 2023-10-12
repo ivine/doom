@@ -58,6 +58,7 @@
 (package! mini-frame)
 (package! treemacs-evil)
 (package! projectile)
+(package! highlight-indent-guides)
 
 ;; lsp
 (package! lsp-sourcekit)
@@ -74,5 +75,8 @@
 
 ;; 前端
 (package! prettier)
-(package! typescript-mode)
+(package! typescript-mode :disable t) ;; emacs 29 集成了, https://github.com/emacs-typescript/typescript.el#good-news-though
 (package! tide)
+(package! tsi :recipe (:host github :repo "orzechowskid/tsi.el" :branch "main"))
+(package! coverlay)
+(package! origami)
