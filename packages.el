@@ -49,7 +49,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! blamer)
+(package! blamer :recipe (:host github :repo "artawower/blamer.el"))
 (package! persp-mode)
 (package! better-jumper)
 (package! zoom-window)

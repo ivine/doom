@@ -185,11 +185,11 @@
   :custom
   (blamer-idle-time 0.3)
   (blamer-min-offset 70)
-  :custom-face
-  (blamer-face ((t :foreground "#7a88cf"
-                    :background nil
-                    :height 100
-                    :italic t)))
+  ;; :custom-face
+  ;; (blamer-face ((t :foreground "#32c47c"
+  ;;                   :background nil
+  ;;                   :height 140
+  ;;                   :italic t)))
   :config
   (global-blamer-mode 0))
 ;; ------- blamer 配置 End -----------------------------------------------------------------------------
@@ -198,13 +198,6 @@
 (use-package company-box
   :hook (company-mode . company-box-mode))
 ;; ------- company 配置 End -----------------------------------------------------------------------------
-
-;; ------- Emacs Start Up Profiler 配置 Start -----------------------------------------------------------------------------
-(use-package esup
-  :ensure t
-  ;; To use MELPA Stable use ":pin melpa-stable",
-  :pin melpa)
-;; ------- Emacs Start Up Profiler 配置 End -----------------------------------------------------------------------------
 
 ;; ------- all-the-icons 配置 Start -----------------------------------------------------------------------------
 (use-package all-the-icons
@@ -223,13 +216,6 @@
 ;; )
 ;; (minimap-mode 1)
 ;; ------- 代码 minimap 配置 End -----------------------------------------------------------------------------
-
-;; ------- better-jumper 配置 Start -----------------------------------------------------------------------------
-(use-package better-jumper
-  :ensure t
-  :init
-  (better-jumper-mode 1))
-;; ------- better-jumper 配置 End -----------------------------------------------------------------------------  
 
 ;; ------- 多光标(evil-mc)配置 Start -----------------------------------------------------------------------------
 ;; (use-package evil-mc
@@ -261,20 +247,14 @@
 ;;   ;; or
 ;;   ;; (add-to-list 'lsp-file-watch-ignored-files "[/\\\\]\\.my-files\\'")
 ;; )
-;; (defun lsp_log_project_info ()
-;;   (when (and (projectile-project-p)
-;;             (message "debug log, projectile-project-name = %s" projectile-project-name)
-;;             (message "debug log, projectile-project-root = %s" projectile-project-root))
-;;     ;; (push (projectile-project-root) lsp-session-folder-blacklist)
-;;     ))
-;; (add-hook 'lsp-mode-hook #'lsp_log_project_info)
+(defun lsp_log_project_info ()
+  (when (and (projectile-project-p)
+            (message "debug log, projectile-project-name = %s" projectile-project-name)
+            (message "debug log, projectile-project-root = %s" projectile-project-root))
+    ;; (push (projectile-project-root) lsp-session-folder-blacklist)
+    ))
+(add-hook 'lsp-mode-hook #'lsp_log_project_info)
 ;; ------- lsp-mode 配置 End -----------------------------------------------------------------------------
-
-;; ------- doom-modeline 配置 Start -----------------------------------------------------------------------------
-(use-package doom-modeline
-  :ensure t
-  :hook (after-init . doom-modeline-mode))
-;; ------- doom-modeline 配置 End -----------------------------------------------------------------------------
 
 ;; ------- iOS 配置 Start -----------------------------------------------------------------------------
 (use-package lsp-sourcekit
@@ -287,8 +267,7 @@
   :hook (swift-mode . (lambda () (lsp))))
 
 ;; Swift 补全
-(add-to-list 'company-backends 'company-sourcekit)
-
+;; (add-to-list 'company-backends 'company-sourcekit)
 (with-eval-after-load 'flycheck
   (add-hook 'flycheck-mode-hook #'flycheck-swift3-setup))
 
