@@ -147,7 +147,7 @@
 
 
 (after! lsp-dart
-  (setq lsp-dart-line-length 120)  ;; 一行的最大长度
+  (setq lsp-dart-line-length 140)  ;; 一行的最大长度
   (setq-hook! 'dart-mode-hook tab-width 2)  ;; 制表符 2
   ;; (setq-hook! 'dart-mode-hook +format-without-save nil) ;; 保存不自动格式化
 )
@@ -296,3 +296,7 @@
 ;; (set-frame-font "Menlo 13" nil t)
 (setq doom-font (font-spec :family "Hack Nerd Font" :size 14))
 ;; ------- 字体配置 End -----------------------------------------------------------------------------
+
+;; ------- editor Start -----------------------------------------------------------------------------
+(setq fill-column 140)
+;; ------- editor End -----------------------------------------------------------------------------
