@@ -59,6 +59,7 @@
 (package! treemacs-evil)
 (package! projectile)
 (package! highlight-indent-guides)
+(package! all-the-icons)
 
 ;; lsp
 (package! lsp-sourcekit)
